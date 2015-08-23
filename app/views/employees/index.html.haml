@@ -1,0 +1,19 @@
+%div{'ng-controller' => 'EmployeeController', 'ng-init' => "init(#{@employees})"}
+  %table
+    %thead
+      %tr
+        - Employee.column_names.each do |column|
+          %th=column.humanize
+  %tbody
+    - @employees.each do |employee|
+      %tr
+        - employee.attributes.values.each do |attribute|
+          %td=attribute
+
+  %form{'ng-submit'=>"createEmployee"}
+    %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name' }
+    %input{type: 'text', 'ng-model' => 'newEmployee.start_date', placeholder: 'Date (YYYY-MM-DD)'}
+    %input{type: 'submit', value: 'Create New'}
+
