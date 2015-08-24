@@ -50,7 +50,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl_rails'
+  gem 'connection_pool'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', :require => false
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'sqlite3'
