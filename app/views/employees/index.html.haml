@@ -1,19 +1,25 @@
-%div{'ng-controller' => 'EmployeeController', 'ng-init' => "init(#{@employees})"}
+%div{'ng-controller' => 'EmployeeController', 'ng-init' => 'init()'}
   %table
     %thead
       %tr
-        - Employee.column_names.each do |column|
-          %th=column.humanize
+        %th Employee ID
+        %th First Name
+        %th Last Name
+        %th Hire Date
+        %th Termination Date
   %tbody
-    - @employees.each do |employee|
-      %tr
-        - employee.attributes.values.each do |attribute|
-          %td=attribute
+    %tr{'ng-repeat' => "employee in employees"}
+      %td {{employee.id}}
+      %td {{employee.first_name}}
+      %td {{employee.last_name}}
+      %td {{employee.hire_date}}
+      %td {{employee.termination_date}}
 
-  %form{'ng-submit'=>"createEmployee"}
-    %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name'}
-    %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name'}
-    %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name' }
-    %input{type: 'text', 'ng-model' => 'newEmployee.start_date', placeholder: 'Date (YYYY-MM-DD)'}
+  %form{'ng-submit' => 'createEmployee()'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }
+    %input{type: 'text', 'ng-model' => 'newEmployee.start_date', placeholder: 'Date (YYYY-MM-DD)', name: 'hire_date'}
     %input{type: 'submit', value: 'Create New'}
+
 

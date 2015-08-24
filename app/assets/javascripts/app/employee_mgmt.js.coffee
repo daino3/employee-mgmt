@@ -1,19 +1,22 @@
 'use strict'
 
-employeeMgmtApp = angular.module('EmployeeMgmt', ['ngResource'])
+window.employeeMgmtApp = angular.module('EmployeeMgmt', ['EmployeeMgmt.controllers'])
 
-employeeMgmtApp.factory("Employee", ['$resouce', () ->
+services = angular.module('EmployeeMgmt.services', ['ngResource'])
+controllers = angular.module('EmployeeMgmt.controllers', ['EmployeeMgmt.services'])
+
+services.factory("Employee", ['$resource', ($resource) ->
   $resource('/api/v1/employees/:id.json', {id: "@id"}, {update: {method: 'PUT'}})
 ])
 
-employeeMgmtApp.controller('EmployeeController', ['$scope', ($scope)->
+controllers.controller('EmployeeController', ['$scope', 'Employee', ($scope, Employee)->
 
-  $scope.init = (employees)->
-    $scope.employees = employees
+  $scope.init = ()->
+    $scope.employees = gon.employees
 
   $scope.createEmployee = ()->
     employee = Employee.save($scope.newEmployee)
+    debugger
     $scope.employees.push(employee)
     $scope.newEmployee = {}
-
 ])
