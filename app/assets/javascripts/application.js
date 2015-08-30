@@ -13,6 +13,7 @@
 //= require underscore
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/datepicker
 //= require turbolinks
 //= require angular
 //= require angular-resource
