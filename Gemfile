@@ -1,26 +1,31 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.3'
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-gem 'jquery-rails'
-gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# rails
 gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git'
-gem 'angularjs-rails'
+gem "responders"
+
+# markup
 gem 'foundation-rails'
-gem 'gon'
 gem 'haml-rails'
+gem 'sass-rails', '~> 5.0'
+
+# javascript
+gem 'angular_rails_csrf'
+gem 'angularjs-rails'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'gon'
+gem 'jquery-rails'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
+gem 'underscore-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
