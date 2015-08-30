@@ -7,19 +7,24 @@
         %th Last Name
         %th Hire Date
         %th Termination Date
-  %tbody
-    %tr{'ng-repeat' => "employee in employees"}
-      %td {{employee.id}}
-      %td {{employee.first_name}}
-      %td {{employee.last_name}}
-      %td {{employee.hire_date}}
-      %td {{employee.termination_date}}
+    %tbody
+      %tr{'ng-repeat' => "employee in employees"}
+        %td {{employee.id}}
+        %td {{employee.first_name}}
+        %td {{employee.last_name}}
+        %td {{employee.hire_date}}
+        %td {{employee.termination_date}}
+
+  %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors'}
+    %div{class: 'alert-box warning', data: {alert: true}}
+      {{ key }} - {{ message[0] }}
+      %a{href: "#", class: "close", 'ng-click' => 'deleteError'}⊗
 
   %form{'ng-submit' => 'createEmployee()'}
     %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }
     %input{type: 'text', 'ng-model' => 'newEmployee.start_date', placeholder: 'Date (YYYY-MM-DD)', name: 'hire_date'}
-    %input{type: 'submit', value: 'Create New'}
+    %input{type: 'submit', class: 'button', value: 'Create New'}
 
 
