@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150831002306) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "departments", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -33,9 +30,9 @@ ActiveRecord::Schema.define(version: 20150831002306) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "employee_positions", ["boss_id"], name: "index_employee_positions_on_boss_id", using: :btree
-  add_index "employee_positions", ["employee_id"], name: "index_employee_positions_on_employee_id", using: :btree
-  add_index "employee_positions", ["sub_department_id"], name: "index_employee_positions_on_sub_department_id", using: :btree
+  add_index "employee_positions", ["boss_id"], name: "index_employee_positions_on_boss_id"
+  add_index "employee_positions", ["employee_id"], name: "index_employee_positions_on_employee_id"
+  add_index "employee_positions", ["sub_department_id"], name: "index_employee_positions_on_sub_department_id"
 
   create_table "employee_types", force: :cascade do |t|
     t.string   "name"
@@ -64,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150831002306) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "pay_structures", ["employee_position_id"], name: "index_pay_structures_on_employee_position_id", using: :btree
-  add_index "pay_structures", ["employee_type_id"], name: "index_pay_structures_on_employee_type_id", using: :btree
+  add_index "pay_structures", ["employee_position_id"], name: "index_pay_structures_on_employee_position_id"
+  add_index "pay_structures", ["employee_type_id"], name: "index_pay_structures_on_employee_type_id"
 
   create_table "sub_departments", force: :cascade do |t|
     t.string   "name"
@@ -74,6 +71,6 @@ ActiveRecord::Schema.define(version: 20150831002306) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "sub_departments", ["department_id"], name: "index_sub_departments_on_department_id", using: :btree
+  add_index "sub_departments", ["department_id"], name: "index_sub_departments_on_department_id"
 
 end
