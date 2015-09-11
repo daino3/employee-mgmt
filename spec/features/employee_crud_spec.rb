@@ -5,9 +5,10 @@ describe "the signin process", type: :feature, js: true do
   it "signs me in" do
     visit '/employees'
     binding.pry
-    within("#session") do
-      fill_in 'Email', :with => 'user@example.com'
-      fill_in 'Password', :with => 'password'
+    within(".new-employee-form") do
+      fill_in 'first_name', with: 'Steve'
+      fill_in 'middle_name', with: 'Stewart'
+      fill_in 'last_name', with: 'Sampson'
     end
     click_button 'Sign in'
     expect(page).to have_content 'Success'
