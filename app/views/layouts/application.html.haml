@@ -11,5 +11,37 @@
     = csrf_meta_tags
     = include_gon
   %body
-    %div.row
-      = yield
+    .off-canvas-wrap{"data-offcanvas" => ""}
+      .inner-wrap
+        %nav.tab-bar
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon{:href => "#"}
+              %span
+          %section.middle.tab-bar-section
+            %h1.title Employee Management
+          %section.right-small
+            %a.right-off-canvas-toggle.menu-icon{:href => "#"}
+              %span
+        %aside.left-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Employee Management
+            %li
+              %a{:href => "#"} Departments
+            %li
+              %a{:href => "#"} Cash Burn
+            %li
+              %a{:href => "#"} Employee Timelines
+            %li
+              %a{:href => "#"} Manage Job Postings
+        %aside.right-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label My Account
+            %li
+              %a{:href => "#"} Login
+            %li
+              %a{:href => "#"} Account Settings
+        %section.main-section.row
+          = yield
+        %a.exit-off-canvas

@@ -1,3 +1,4 @@
+= render partial: 'department_tabs', locals: {departments: @departments}
 %div{'ng-controller' => 'EmployeeController', 'ng-init' => 'init()'}
   %table
     %thead
@@ -16,11 +17,11 @@
         %td {{employee.termination_date}}
 
   %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors'}
-    %div{class: 'alert-box warning', data: {alert: true}}
+    %div.alert-box.warning{data: {alert: true}}
       {{ key }} - {{ message[0] }}
       %a{href: "#", class: "close", 'ng-click' => 'deleteError'}⊗
 
-  %form{'ng-submit' => 'createEmployee()'}
+  %form{'ng-submit' => 'createEmployee()', class: 'new-employee-form'}
     %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }

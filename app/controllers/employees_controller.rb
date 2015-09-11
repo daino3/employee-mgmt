@@ -4,6 +4,8 @@ class EmployeesController < ApplicationController
     @employees = Employee.all
     gon.employees = ActiveModel::Serializer::ArraySerializer.new(@employees, each_serializer: EmployeeSerializer).as_json
 
+    @departments = Department.all
+
     respond_to do |format|
       format.html
     end
