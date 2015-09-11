@@ -18,6 +18,7 @@
 //= require angular
 //= require angular-resource
 //= require foundation
+//= require app/employee_mgmt
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
