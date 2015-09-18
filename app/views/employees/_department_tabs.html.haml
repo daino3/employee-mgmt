@@ -3,8 +3,9 @@
     .row.collapse
       .small-12.columns
         %ul.tabs{"data-tab" => ""}
+          - tab_cols = (16.0 / departments.count).floor
           - departments.each_with_index do |department, index|
-            %li.tab-title.active
+            %li.tab-title.active{class: "small-#{tab_cols} columns"}
               %a{:href => "#panel-#{index + 1}"}
                 %i{class: "#{%w(fi-wrench fi-widget fi-video fi-photo).sample}"}>
                 = department.name

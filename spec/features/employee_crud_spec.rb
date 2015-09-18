@@ -4,7 +4,6 @@ describe "the signin process", type: :feature, js: true do
 
   it "signs me in" do
     visit '/employees'
-    binding.pry
     within(".new-employee-form") do
       fill_in 'first_name', with: 'Steve'
       fill_in 'middle_name', with: 'Stewart'

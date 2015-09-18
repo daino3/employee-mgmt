@@ -3,10 +3,13 @@ require 'rails_helper'
 describe EmployeesController do
   include GonHelpers
 
-  let!(:employee) { FactoryGirl.create(:employee) }
+  let(:sub_department) { FactoryGirl.create(:sub_department) }
+  let(:position) { FactoryGirl.create(:employee_position, sub_department: sub_department) }
+  let!(:employee) { FactoryGirl.create(:employee).employee_positions << position }
+
   render_views
 
-  describe 'GET index' do
+  describe 'GET index', :focus do
     subject { get :index }
     it { should render_template('employees/index') }
 
