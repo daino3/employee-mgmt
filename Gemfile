@@ -55,6 +55,7 @@ group :test do
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'spring-commands-rspec'
   gem 'sqlite3'
 end
 
