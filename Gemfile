@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem "capybara-webkit"
   gem 'capybara-screenshot'
   gem 'connection_pool'
   gem 'database_cleaner'

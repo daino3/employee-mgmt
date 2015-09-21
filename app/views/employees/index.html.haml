@@ -1,6 +1,6 @@
 = render partial: 'department_tabs', locals: {departments: @departments}
 %div{'ng-controller' => 'EmployeeController', 'ng-init' => 'init()'}
-  %table
+  %table{class: 'employee-table'}
     %thead
       %tr
         %th Employee ID
@@ -16,7 +16,7 @@
         %td {{employee.hire_date}}
         %td {{employee.termination_date}}
 
-  %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors'}
+  %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors', class: 'employee-error-container'}
     %div.alert-box.warning{data: {alert: true}}
       {{ key }} - {{ message[0] }}
       %a{href: "#", class: "close", 'ng-click' => 'deleteError'}⊗
@@ -25,7 +25,7 @@
     %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
     %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }
-    %input{type: 'text', 'ng-model' => 'newEmployee.hire_date', datepicker: true, name: 'hire_date', placeholder: 'Select a Date'}
-    %input{type: 'submit', class: 'button', value: 'Create New'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.hire_date', datepicker: true, name: 'hire_date', placeholder: 'Select a Date', id: 'hire_date'}
+    %input{type: 'submit', class: 'button', value: 'Create Employee'}
 
 

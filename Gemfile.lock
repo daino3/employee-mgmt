@@ -62,6 +62,9 @@ GEM
     capybara-screenshot (1.0.10)
       capybara (>= 1.0, < 3)
       launchy
+    capybara-webkit (1.7.0)
+      capybara (>= 2.3.0, < 2.6.0)
+      json
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -258,8 +261,8 @@ DEPENDENCIES
   active_model_serializers!
   angular_rails_csrf
   angularjs-rails
-  capybara
   capybara-screenshot
+  capybara-webkit
   coffee-rails (~> 4.1.0)
   connection_pool
   database_cleaner

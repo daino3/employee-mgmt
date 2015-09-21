@@ -9,7 +9,7 @@ describe EmployeesController do
 
   render_views
 
-  describe 'GET index', :focus do
+  describe 'GET index' do
     subject { get :index }
     it { should render_template('employees/index') }
 
