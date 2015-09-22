@@ -28,4 +28,27 @@ describe Api::V1::EmployeesController do
       expect(response_body['errors']['hire_date']).to be_present
     end
   end
+
+  describe 'GET index' do
+    let(:department) { FactoryGirl.create(:department) }
+    let(:sub_department) { FactoryGirl.create(:sub_department, department: department) }
+    let(:position) { FactoryGirl.create(:employee_position, sub_department: sub_department) }
+    let!(:employee) { FactoryGirl.create(:employee, employee_positions: [position]) }
+
+    it 'can filter employees by department' do
+      get :index, department_id: department.id, format: :json
+
+      employees = JSON.parse(response.body)
+      expect(employees.length).to eq(1)
+    end
+
+    it 'will return all employees without any filters' do
+      get :index, format: :json
+
+      employees = JSON.parse(response.body)
+      expect(response).to be_successful
+      expect(employees.length).to eq(1)
+      expect(employees.first['first_name']).to eq(employee.first_name)
+    end
+  end
 end
