@@ -8,12 +8,14 @@
         %th Last Name
         %th Hire Date
         %th Termination Date
+        %th Department
     %tbody
       %tr{'ng-repeat' => "employee in employees"}
         %td {{employee.id}}
         %td {{employee.first_name}}
         %td {{employee.last_name}}
         %td {{employee.hire_date}}
+        %td {{employee.termination_date}}
         %td {{employee.termination_date}}
 
   %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors', class: 'employee-error-container'}

@@ -1,14 +1,13 @@
 %link{:href => "http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css", :rel => "stylesheet"}
   %section.secondary-tabs
-    .row.collapse
-      .small-12.columns
-        %ul.tabs{"data-tab" => ""}
-          - tab_cols = num_cols(departments.count)
-          - departments.each_with_index do |department, index|
-            %li.tab-title.active{class: "small-#{tab_cols} columns"}
-              %a{:href => "#panel-#{index + 1}"}
-                %i{class: "#{%w(fi-wrench fi-widget fi-video fi-photo).sample}"}>
-                = department.name
+    .row
+      %ul.small-16.columns.tabs{"data-tab" => ""}
+        - tab_cols = num_cols(departments.count)
+        - departments.each_with_index do |department, index|
+          %li.tab-title.active{class: "small-#{tab_cols} columns"}
+            %a{:href => "#panel-#{index + 1}"}
+              %i{class: "#{%w(fi-wrench fi-widget fi-video fi-photo).sample}"}>
+              = department.name
         .tabs-content
           #panel-1.content.active
             .row
