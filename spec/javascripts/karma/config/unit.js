@@ -1,11 +1,8 @@
-// Karma configuration
-// Generated on Mon Feb 03 2014 16:16:15 GMT+0100 (CET)
-//
 module.exports = function(config) {
   config.set({
 
-    // base path, based on tmp/ folder
-    basePath: '../',
+    // base path
+    basePath: '../../employee-mgmt/',
 
     // frameworks to use
     frameworks: ['jasmine'],
@@ -13,8 +10,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       APPLICATION_SPEC,
-      'app/assets/templates/**/*.haml',
-      'spec/javascripts/**/*_spec.{coffee,js,js.coffee}'
+      'app/assets/javascripts/app/*/*.{coffee,js,js.coffee}'
     ],
 
     // list of files to exclude
@@ -38,13 +34,13 @@ module.exports = function(config) {
     autoWatch: true,
 
     // Start these browsers, currently available:
-    //  - Chrome
-    //  - ChromeCanary
-    //  - Firefox
-    //  - Opera (has to be installed with `npm install karma-opera-launcher`)
-    //  - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
-    //  - PhantomJS
-    //  - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
+    // - Chrome
+    // - ChromeCanary
+    // - Firefox
+    // - Opera (has to be installed with `npm install karma-opera-launcher`)
+    // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
+    // - PhantomJS
+    // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
     browsers: ['PhantomJS'],
 
     // If browser does not capture in given timeout [ms], kill it
@@ -57,14 +53,12 @@ module.exports = function(config) {
     // Preprocessors
     preprocessors: {
       '**/*.coffee': ['coffee'],
-      '**/*.haml': ['haml', 'ng-html2js']
+      '**/*.slim': ['slim', 'ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
       stripPrefix: 'app/assets/templates/',
       stripSufix: '.slim'
     }
-
   });
 };
-

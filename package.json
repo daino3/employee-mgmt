@@ -1,5 +1,6 @@
 {
   "name": "employee-mgmt",
+  "private": true,
   "dependencies": {
     "karma": ">= 0.12.16",
     "karma-jasmine": ">= 0.2.2",
