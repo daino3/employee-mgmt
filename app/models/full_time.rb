@@ -1,0 +1,3 @@
+class FullTime < EmployeeType
+
+end

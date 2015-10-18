@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831002306) do
+ActiveRecord::Schema.define(version: 20151018185134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150831002306) do
 
   create_table "employee_positions", force: :cascade do |t|
     t.integer  "sub_department_id"
-    t.integer  "employee_id"
     t.integer  "boss_id"
     t.string   "title"
     t.date     "start_date"
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150831002306) do
   end
 
   add_index "employee_positions", ["boss_id"], name: "index_employee_positions_on_boss_id", using: :btree
-  add_index "employee_positions", ["employee_id"], name: "index_employee_positions_on_employee_id", using: :btree
   add_index "employee_positions", ["sub_department_id"], name: "index_employee_positions_on_sub_department_id", using: :btree
 
   create_table "employee_types", force: :cascade do |t|
@@ -62,8 +60,10 @@ ActiveRecord::Schema.define(version: 20150831002306) do
     t.date     "end_date"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "employee_id"
   end
 
+  add_index "pay_structures", ["employee_id"], name: "index_pay_structures_on_employee_id", using: :btree
   add_index "pay_structures", ["employee_position_id"], name: "index_pay_structures_on_employee_position_id", using: :btree
   add_index "pay_structures", ["employee_type_id"], name: "index_pay_structures_on_employee_type_id", using: :btree
 
