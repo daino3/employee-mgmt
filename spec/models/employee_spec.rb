@@ -3,12 +3,13 @@ require 'rails_helper'
 describe Employee do
   let(:marketing) {FactoryGirl.create(:department, name: 'Marketing')}
   let(:social_media_department) {FactoryGirl.create(:sub_department, department: marketing, name: 'Social Media')}
-  let(:boss) {FactoryGirl.create(:employee)}
-  let(:boss_position) {FactoryGirl.create(:employee_position, sub_department: social_media_department, employee: boss, title: 'Head of Social Media', start_date: Time.zone.today - 2.years)}
-  let(:analyst) {FactoryGirl.create(:employee)}
-  let(:analyst_position) {FactoryGirl.create(:employee_position, sub_department: social_media_department, boss: boss, employee: analyst, title: 'Social Media Analyst', start_date: Time.zone.today)}
-  let(:employee_type) { FactoryGirl.create(:employee_type, type: 'W-2') }
-  let(:analyst_pay) { FactoryGirl.create(:pay_structure, employee_position: analyst_position, employee_type: employee_type, start_date: Time.zone.today) }
+
+  let(:boss)    { FactoryGirl.create(:employee) }
+  let(:analyst) { FactoryGirl.create(:employee) }
+  let(:boss_position)    { FactoryGirl.create(:employee_position, sub_department: social_media_department, title: 'Head of Social Media') }
+  let(:analyst_position) { FactoryGirl.create(:employee_position, sub_department: social_media_department, title: 'Social Media Analyst', boss: boss_position) }
+  let(:boss_pay)    { FactoryGirl.create(:pay_structure, :full_time, employee_position: boss_position, employee: boss, start_date: Time.zone.today - 10.months, ) }
+  let(:analyst_pay) { FactoryGirl.create(:pay_structure, :part_time, employee_position: analyst_position, employee: analyst, start_date: Time.zone.today) }
 
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
@@ -16,7 +17,7 @@ describe Employee do
 
   describe '#current_position' do
     it 'returns the employees current position' do
-      [analyst_position]
+      [analyst_pay]
       expect(analyst.current_position.title).to eq('Social Media Analyst')
     end
   end

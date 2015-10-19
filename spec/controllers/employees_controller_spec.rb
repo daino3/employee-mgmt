@@ -5,20 +5,22 @@ describe EmployeesController do
 
   let(:sub_department) { FactoryGirl.create(:sub_department) }
   let(:position) { FactoryGirl.create(:employee_position, sub_department: sub_department) }
-  let!(:employee) { FactoryGirl.create(:employee).employee_positions << position }
+  let(:pay_structure) { FactoryGirl.create(:pay_structure, :part_time, employee_position: position) }
+  let!(:employee) { FactoryGirl.create(:employee).pay_structures << pay_structure }
 
   render_views
 
   describe 'GET index' do
     subject { get :index }
+
     it { should render_template('employees/index') }
 
     it 'should serialize employees' do
       get :index
 
-      should_set_gon(response.body, :employees)
+      should_set_gon(response.body, :departments)
       expect(response).to be_successful
-      expect(assigns[:employees].count).to eq(1)
+      expect(assigns[:departments].count).to eq(1)
     end
   end
 end
