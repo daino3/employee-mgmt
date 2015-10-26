@@ -1,5 +1,13 @@
-= render partial: 'department_tabs', locals: {departments: @departments}
 %div{'ng-controller' => 'EmployeeController', 'ng-init' => 'init()'}
+  %section.secondary-tabs
+    .row
+    %dl.sub-nav
+      %dt Filter:
+      %dd.active{'ng-click' => "selectedDepartment = null" }
+        %a{href: "#"} All
+      %dd{'ng-repeat' => 'department in departments', 'ng-model' => 'department', 'ng-click' => 'filterByDepartment(department.name, $event)' }
+        %a{href: "#"} {{ department.name }}
+
   %table{class: 'employee-table'}
     %thead
       %tr
@@ -10,13 +18,13 @@
         %th Termination Date
         %th Department
     %tbody
-      %tr{'ng-repeat' => "employee in employees"}
+      %tr{'ng-repeat' => "employee in employees | filter: departmentFilter"}
         %td {{employee.id}}
         %td {{employee.first_name}}
         %td {{employee.last_name}}
         %td {{employee.hire_date}}
         %td {{employee.termination_date}}
-        %td {{employee.termination_date}}
+        %td {{employee.department.name}}
 
   %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors', class: 'employee-error-container'}
     %div.alert-box.warning{data: {alert: true}}

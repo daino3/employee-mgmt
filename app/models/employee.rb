@@ -13,4 +13,9 @@ class Employee < ActiveRecord::Base
     pay_structures.active.first.employee_position
   end
 
+  def department
+    current_position.department.presence ||
+    current_position.sub_department.department
+  end
+
 end
