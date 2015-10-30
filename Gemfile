@@ -24,7 +24,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails'
 gem "d3-rails"
