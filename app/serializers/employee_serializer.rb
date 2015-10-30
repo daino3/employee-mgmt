@@ -4,6 +4,9 @@ class EmployeeSerializer < ActiveModel::Serializer
     :last_name,
     :hire_date,
     :termination_date,
-    :department
+    :department,
+    :sub_department,
+    :current_position,
+    :current_pay
 
 end

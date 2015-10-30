@@ -10,12 +10,19 @@ class Employee < ActiveRecord::Base
 
   def current_position
     # TODO: shouldn't use scope here
-    pay_structures.active.first.employee_position
+    current_pay.employee_position
   end
 
   def department
-    current_position.department.presence ||
-    current_position.sub_department.department
+    current_position.department.presence || sub_department.department
+  end
+
+  def sub_department
+    current_position.sub_department
+  end
+
+  def current_pay
+    pay_structures.active.first
   end
 
 end

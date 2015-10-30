@@ -14,8 +14,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/datepicker
-//= require turbolinks
+//= require_tree ./lib
 //= require angular
+//= require angular-foundation.min
 //= require angular-resource
 //= require foundation
 //= require app/employee_mgmt
