@@ -15,4 +15,8 @@ class Department < ActiveRecord::Base
     emp_ids = PayStructure.where(id: pos_ids).pluck(:employee_id)
     Employee.where(id: emp_ids)
   end
+
+  def employee_positions
+    EmployeePosition.joins(:sub_department).where(sub_department: sub_departments.pluck(:id))
+  end
 end

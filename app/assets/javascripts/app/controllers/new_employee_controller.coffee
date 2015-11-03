@@ -11,4 +11,7 @@
     $scope.cancel = ->
       $modalInstance.dismiss()
 
+    $scope.createEmployee = ->
+      debugger
+
 ])

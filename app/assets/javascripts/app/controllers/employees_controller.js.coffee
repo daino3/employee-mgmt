@@ -9,6 +9,7 @@
     $scope.init = ()->
       $scope.employees =  _.map(gon.employees, (empJson)-> new Employee(empJson))
       $scope.departments =  _.map(gon.departments, (depJson)-> new Department(depJson))
+      window.controller = @
 
     $scope.filterByDepartment = (departmentName, event)->
       $('dd.active').removeClass('active')
@@ -32,7 +33,7 @@
         windowClass: 'tiny'
       )
       modalInstance.result.then ->
-        $scope.sendOrder()
+        $scope.createEmployee()
 
 
     $scope.createEmployee = ()->
