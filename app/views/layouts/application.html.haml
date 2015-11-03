@@ -11,18 +11,15 @@
     = csrf_meta_tags
     = include_gon
   %body
-    .off-canvas-wrap{"data-offcanvas" => ""}
+    .off-canvas-wrap
       .inner-wrap
         %nav.tab-bar
-          %section.left-small
-            %a.left-off-canvas-toggle.menu-icon{:href => "#"}
-              %span
           %section.middle.tab-bar-section
             %h1.title Employee Management
           %section.right-small
             %a.right-off-canvas-toggle.menu-icon{:href => "#"}
               %span
-        %aside.left-off-canvas-menu
+        %aside.right-off-canvas-menu
           %ul.off-canvas-list
             %li
               %label Employee Management
@@ -34,14 +31,6 @@
               %a{:href => "#"} Employee Timelines
             %li
               %a{:href => "#"} Manage Job Postings
-        %aside.right-off-canvas-menu
-          %ul.off-canvas-list
-            %li
-              %label My Account
-            %li
-              %a{:href => "#"} Login
-            %li
-              %a{:href => "#"} Account Settings
         %section.main-section.row
           = yield
         %a.exit-off-canvas
