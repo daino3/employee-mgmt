@@ -8,4 +8,12 @@ class EmployeesController < ApplicationController
       format.html
     end
   end
+
+  def show
+    gon.employee = @employee = Employee.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
 end

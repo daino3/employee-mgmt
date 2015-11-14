@@ -1,16 +1,28 @@
-%div{'ng-controller' => 'EmployeesController', 'ng-init' => 'init()'}
+%div.employee-table{'ng-controller' => 'EmployeesController', 'ng-init' => 'init()'}
+  %div
+    .icon-bar
+      %a.item
+        .item-icon.icon.icon-table2
+        %label Table View
+      %a.item
+        .item-icon.icon.icon-tree
+        %label Org Chart
+      %a.item
+        .item-icon.fi-torsos-all
+        %label Post Job
   %section.secondary-tabs
     .row
-    %dl.sub-nav
-      %dt Filter:
-      %dd.active{'ng-click' => "selectedDepartment = null" }
-        %a{href: "#"} All
-      %dd{'ng-repeat' => 'department in departments', 'ng-model' => 'department', 'ng-click' => 'filterByDepartment(department.name, $event)' }
-        %a{href: "#"} {{ department.name }}
+      %dl.sub-nav
+        %dt Filter:
+        %dd.active{'ng-click' => "selectedDepartment = null" }
+          %a{href: "#"} All
+        %dd{'ng-repeat' => 'department in departments', 'ng-model' => 'department', 'ng-click' => 'filterByDepartment(department.name, $event)' }
+          %a{href: "#"} {{ department.name }}
 
-  %table{class: 'employee-table'}
+  %table
     %thead
       %tr
+        %th Actions
         %th Employee ID
         %th First Name
         %th Last Name
@@ -22,6 +34,10 @@
         %th Salary
     %tbody
       %tr{'ng-repeat' => "employee in employees | filter: departmentFilter"}
+        %td
+          %ul.inline-list
+            %li
+              %a{'ng-href' =>'/employees/{{ employee.id }}'} View
         %td {{employee.id}}
         %td {{employee.first_name}}
         %td {{employee.last_name}}
