@@ -7,9 +7,8 @@
     $scope.date = null
 
     $scope.init = ()->
-      $scope.employees =  _.map(gon.employees, (empJson)-> new Employee(empJson))
+      $scope.employees   =  _.map(gon.employees, (empJson)-> new Employee(empJson))
       $scope.departments =  _.map(gon.departments, (depJson)-> new Department(depJson))
-      window.controller = @
 
     $scope.filterByDepartment = (departmentName, event)->
       $('dd.active').removeClass('active')
@@ -37,15 +36,13 @@
 
 
     $scope.createEmployee = ()->
-      params = {employee: _.extend($scope.newEmployee, hire_date: $scope.date)}
+      params  = {employee: _.extend($scope.newEmployee, hire_date: $scope.date)}
       promise = Employee.save(params).$promise
       promise.then((response) ->
         $scope.employees.push(new Employee(response))
         $scope.date = $scope.newEmployee = {} # reset form / scope variables
-        return
       ).catch( (response) ->
         $scope.errors = response.data.errors
-        return
       )
 ])
 

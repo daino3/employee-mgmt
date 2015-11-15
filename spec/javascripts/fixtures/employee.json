@@ -1,0 +1,36 @@
+{
+  "first_name": "Dain",
+  "id": 1,
+  "last_name": "Hall",
+  "hire_date": "2014-04-19",
+  "termination_date": null,
+  "department": {
+    "id": 6,
+    "name": "Executive",
+    "created_at": "2015-10-19T02:25:39.873Z",
+    "updated_at": "2015-10-19T02:25:39.873Z",
+    "company_id": 1
+  },
+  "sub_department": null,
+  "current_position": {
+    "id": 1,
+    "sub_department_id": null,
+    "boss_id": null,
+    "title": "CEO",
+    "created_at": "2015-10-19T02:25:40.010Z",
+    "updated_at": "2015-10-19T02:25:40.010Z",
+    "department_id": 6
+  },
+  "current_pay": {
+    "id": 1,
+    "employee_position_id": 1,
+    "employee_type_id": 1,
+    "start_date": "2014-04-19",
+    "end_date": null,
+    "created_at": "2015-10-19T02:25:40.047Z",
+    "updated_at": "2015-10-19T02:25:40.047Z",
+    "employee_id": 1,
+    "salary": 90000,
+    "hourly_rate": null
+  }
+}

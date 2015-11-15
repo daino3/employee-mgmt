@@ -1,6 +1,5 @@
 namespace :karma  do
   task :start => :environment do
-
     with_tmp_config :start
   end
 
@@ -11,7 +10,7 @@ namespace :karma  do
   private
 
   def with_tmp_config(command, args = nil)
-    File.open(Rails.root.join('tmp','karma_unit.js'), 'w') do |f|
+    File.open(Rails.root.join('karma.conf.js'), 'w') do |f|
       f.write unit_js(application_spec_files)
       f.flush
 
@@ -20,11 +19,13 @@ namespace :karma  do
   end
 
   def application_spec_files
-    Rails.application.assets.each_file.select { |pathname| pathname.match(/spec\/javascripts\/app/) }
+    app_files  = Rails.application.assets.find_asset("application.coffee").to_a.map {|e| e.pathname.to_s }
+    spec_files = Rails.application.assets.find_asset("spec_helper.coffee").to_a.map {|e| e.pathname.to_s }
+    app_files + spec_files
   end
 
   def unit_js(files)
-    unit_js = File.open('spec/javascripts/karma/config/unit.js', 'r').read
-    unit_js.gsub "APPLICATION_SPEC", "\"#{files.join("\",\n\"")}\""
+    contents = File.open('spec/javascripts/karma/config/unit.js', 'r', &:read)
+    contents.gsub!("APPLICATION_SPEC", "\"#{files.join("\",\n\"")}\"")
   end
 end

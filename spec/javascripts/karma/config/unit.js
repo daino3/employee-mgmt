@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
 
     // base path
-    basePath: '../../employee-mgmt/',
+    basePath: './',
 
     // frameworks to use
     frameworks: ['jasmine'],
@@ -10,7 +10,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       APPLICATION_SPEC,
-      'app/assets/javascripts/app/*/*.{coffee,js,js.coffee}'
+      {pattern: 'spec/javascripts/fixtures/*.json', watched: true, served: true, included: false}
     ],
 
     // list of files to exclude
@@ -52,7 +52,9 @@ module.exports = function(config) {
 
     // Preprocessors
     preprocessors: {
-      '**/*.coffee': ['coffee'],
+      'app/assets/javascripts/**/*.coffee': ['coffee'],
+      'app/assets/javascripts/**/*.coffee.erb': ['coffee'],
+      'spec/javascripts/**/*.coffee': ['coffee'],
       '**/*.slim': ['slim', 'ng-html2js']
     },
 
