@@ -19,4 +19,8 @@ class EmployeePosition < ActiveRecord::Base
     pay_structures.active.flat_map(&:employee)
   end
 
+  def department_name
+    self.department.try(:name) || self.sub_department.try(:department).try(:name)
+  end
+
 end

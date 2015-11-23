@@ -1,0 +1,28 @@
+table {
+  @include grid-row();
+  table-layout: fixed;
+}
+
+tr {
+  height: 40px;
+  td, th {
+    word-wrap: break-word;
+    font-size: 12px !important;
+  }
+}
+
+table.vertical {
+  tr {
+    th {
+      height: inherit;
+    }
+    td {
+      background: white;
+      border-spacing: 2px;
+      border-bottom: 1px solid $smoke;
+      border-collapse: separate;
+      font-weight: normal;
+      height: inherit;
+    }
+  }
+}
