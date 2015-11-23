@@ -1,0 +1,23 @@
+.icon-bar {
+  position: absolute;
+  @media #{$small-only} {
+    top: 0;
+  }
+  @media #{$medium-up} {
+    @extend .medium-vertical !optional;
+    height: auto;
+    left: 0;
+    top: 30%;
+  }
+  a.item {
+    border-bottom: solid white 1px;
+    & .item-icon {
+      color: white;
+      font-size: 50px;
+    }
+  }
+}
+
+.employee-table {
+  min-height: 500px;
+}

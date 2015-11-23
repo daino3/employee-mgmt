@@ -1,0 +1,20 @@
+@import 'foundation_and_overrides';
+@import 'foundation-icons';
+@import 'icomoon-icons';
+@import 'alerts';
+@import 'custom';
+@import 'table_ext';
+
+.green-circle {
+  background: green;
+  border-radius: 20px;
+  color: white;
+  font-size: 26px;
+  height: 40px;
+  text-align: center;
+  width: 40px;
+}
+
+.clickable {
+  cursor: pointer;
+}

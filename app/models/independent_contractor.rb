@@ -1,0 +1,3 @@
+class IndependentContractor < EmployeeType
+
+end

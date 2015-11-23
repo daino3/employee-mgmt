@@ -33,7 +33,8 @@ describe Api::V1::EmployeesController do
     let(:department) { FactoryGirl.create(:department) }
     let(:sub_department) { FactoryGirl.create(:sub_department, department: department) }
     let(:position) { FactoryGirl.create(:employee_position, sub_department: sub_department) }
-    let!(:employee) { FactoryGirl.create(:employee, employee_positions: [position]) }
+    let(:pay_structure) { FactoryGirl.create(:pay_structure, :full_time, employee_position: position) }
+    let!(:employee) { FactoryGirl.create(:employee, pay_structures: [pay_structure]) }
 
     it 'can filter employees by department' do
       get :index, department_id: department.id, format: :json

@@ -1,33 +1,58 @@
-= render partial: 'department_tabs', locals: {departments: @departments}
-%div{'ng-controller' => 'EmployeeController', 'ng-init' => 'init()'}
-  %table{class: 'employee-table'}
+%div.employee-table{'ng-controller' => 'EmployeesController', 'ng-init' => 'init()'}
+  %div
+    .icon-bar
+      %a.item
+        .item-icon.icon.icon-table2
+        %label Table View
+      %a.item
+        .item-icon.icon.icon-tree
+        %label Org Chart
+      %a.item
+        .item-icon.fi-torsos-all
+        %label Post Job
+  %section.secondary-tabs
+    .row
+      %dl.sub-nav
+        %dt Filter:
+        %dd.active{'ng-click' => "selectedDepartment = null" }
+          %a{href: "#"} All
+        %dd{'ng-repeat' => 'department in departments', 'ng-model' => 'department', 'ng-click' => 'filterByDepartment(department.name, $event)' }
+          %a{href: "#"} {{ department.name }}
+
+  %table
     %thead
       %tr
+        %th Actions
         %th Employee ID
         %th First Name
         %th Last Name
         %th Hire Date
         %th Termination Date
         %th Department
+        %th Sub Department
+        %th Title
+        %th Salary
     %tbody
-      %tr{'ng-repeat' => "employee in employees"}
+      %tr{'ng-repeat' => "employee in employees | filter: departmentFilter"}
+        %td
+          %ul.inline-list
+            %li
+              %a{'ng-href' =>'/employees/{{ employee.id }}'} View
         %td {{employee.id}}
         %td {{employee.first_name}}
         %td {{employee.last_name}}
         %td {{employee.hire_date}}
         %td {{employee.termination_date}}
-        %td {{employee.termination_date}}
+        %td {{employee.department.name}}
+        %td {{employee.sub_department.name}}
+        %td {{employee.current_position.title}}
+        %td {{employee.salary | currency:$:0}}
+
+  .fi-plus.green-circle.clickable{'ng-click' => 'newEmployee()'}
 
   %div{'ng-show' => 'errors', 'ng-repeat' => '(key, message) in errors', class: 'employee-error-container'}
     %div.alert-box.warning{data: {alert: true}}
       {{ key }} - {{ message[0] }}
       %a{href: "#", class: "close", 'ng-click' => 'deleteError'}⊗
 
-  %form{'ng-submit' => 'createEmployee()', class: 'new-employee-form'}
-    %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
-    %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
-    %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }
-    %input{type: 'text', 'ng-model' => 'newEmployee.hire_date', datepicker: true, name: 'hire_date', placeholder: 'Select a Date', id: 'hire_date'}
-    %input{type: 'submit', class: 'button', value: 'Create Employee'}
-
-
+  = render partial: 'new_employee'

@@ -1,0 +1,11 @@
+%script{type: 'text/ng-template', id: 'new_employee_modal.html'}
+  %h3 New Employee
+  %form{'ng-submit' => 'createEmployee()', class: 'new-employee-form'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.first_name', placeholder: 'First Name', name: 'first_name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.middle_name', placeholder: 'Middle Name', name: 'middle_name'}
+    %input{type: 'text', 'ng-model' => 'newEmployee.last_name', placeholder: 'Last Name', name: 'last_name' }
+
+    %input{type: 'text', 'ng-model' => 'newEmployee.hire_date', datepicker: true, name: 'hire_date', placeholder: 'Hire Date', id: 'hire_date'}
+    %select{'ng-model'=>'selectedDepartment', name: 'employee[department]', id: 'order_trader', 'ng-options'=>'department.name for department in departments'}
+      %option{value: ''} Select a Department
+    %input{type: 'submit', class: 'button', value: 'Create Employee'}

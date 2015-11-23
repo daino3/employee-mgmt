@@ -1,6 +1,7 @@
 
 FactoryGirl.define do
   factory :department do
+    association :company
 
     before(:create) do |department|
       unless department.name.present?

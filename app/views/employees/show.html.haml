@@ -1,0 +1,68 @@
+%h2 View this Employee
+
+%table#employee-table.vertical
+  %thead
+    %tr
+      %th.small-6.medium-4.columns First Name
+      %td.small-10.medium-12.columns= @employee.first_name
+    %tr
+      %th.small-6.medium-4.columns Middle Name
+      %td.small-10.medium-12.columns= @employee.middle_name
+    %tr
+      %th.small-6.medium-4.columns Last Name
+      %td.small-10.medium-12.columns= @employee.last_name
+    %tr
+      %th.small-6.medium-4.columns Social Security Number
+      %td.small-10.medium-12.columns= @employee.social_security_number
+    %tr
+      %th.small-6.medium-4.columns Hire Date
+      %td.small-10.medium-12.columns= @employee.hire_date
+    %tr
+      %th.small-6.medium-4.columns Termination Date
+      %td.small-10.medium-12.columns= @employee.termination_date
+    %tr
+      %th.small-6.medium-4.columns Created At
+      %td.small-10.medium-12.columns= @employee.created_at
+    %tr
+      %th.small-6.medium-4.columns Updated At
+      %td.small-10.medium-12.columns= @employee.updated_at
+
+%hr
+
+%h4 Held Positions
+%table#employee-positions-table
+  %thead
+    %tr
+      %th Position Title
+      %th Department
+      %th Sub Department
+
+  %tbody
+    - @employee.employee_positions.each do |position|
+      %tr
+        %td= position.title
+        %td= position.department_name
+        %td= position.sub_department.try(:name)
+
+%hr
+
+%h4 Pay Structures
+%table#employee-pay-table
+  %thead
+    %tr
+      %th Position Title
+      %th Employee Type
+      %th Salary
+      %th Hourly Rate
+      %th Start Date
+      %th End Date
+
+  %tbody
+    - @employee.pay_structures.each do |structure|
+      %tr
+        %td= structure.employee_position.title
+        %td= structure.employee_type.type
+        %td= structure.salary
+        %td= structure.hourly_rate
+        %td= structure.start_date
+        %td= structure.start_date
